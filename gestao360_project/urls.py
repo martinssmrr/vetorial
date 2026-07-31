@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.contrib.sitemaps.views import sitemap
 from django.http import JsonResponse
 from apps.testimonials.models import Testimonial
@@ -101,23 +101,6 @@ def abrir_empresa_view(request):
         'planos_comercio': planos_comercio,
     })
 
-def deixar_mei_view(request):
-    """Renderiza a página 'deixar_mei.html' separadamente para permitir edição independente."""
-    from django.shortcuts import render
-    from apps.services.models import Plano
-
-    testimonials = Testimonial.objects.filter(is_active=True)
-
-    # Buscar planos ativos separados por categoria
-    planos_servicos = Plano.objects.filter(ativo=True, categoria='servicos').order_by('ordem', 'preco')
-    planos_comercio = Plano.objects.filter(ativo=True, categoria='comercio').order_by('ordem', 'preco')
-
-    return render(request, 'deixar_mei.html', {
-        'testimonials': testimonials,
-        'planos_servicos': planos_servicos,
-        'planos_comercio': planos_comercio,
-    })
-
 def trocar_contador_view(request):
     """Renderiza a página 'trocar-contador.html' separadamente para permitir edição independente."""
     from django.shortcuts import render
@@ -182,13 +165,15 @@ urlpatterns = [
     path("health/", health_check, name='health_check'),
     path("", home_view, name='home'),
     path("abrir-empresa/", abrir_empresa_view, name='abrir_empresa'),
-    path("deixar-mei/", deixar_mei_view, name='deixar_mei'),
+    # Redirect 301: página "deixar MEI" descontinuada -> abertura de empresa
+    path("deixar-mei/", RedirectView.as_view(pattern_name='abrir_empresa', permanent=True), name='deixar_mei'),
     path("trocar-contador/", trocar_contador_view, name='trocar_contador'),
     path("contabilidade-completa/", contabilidade_completa_view, name='contabilidade_completa'),
     path("assessoria/", assessoria_view, name='assessoria'),
     
     # Novos Serviços
-    path("contabilidade-mei/", TemplateView.as_view(template_name='services/contabilidade_mei.html'), name='contabilidade_mei'),
+    # Redirect 301: página "contabilidade MEI" descontinuada -> contabilidade online
+    path("contabilidade-mei/", RedirectView.as_view(pattern_name='contabilidade_online', permanent=True), name='contabilidade_mei'),
     path("endereco-virtual/", TemplateView.as_view(template_name='services/endereco_virtual.html'), name='endereco_virtual'),
     path("certificado-digital/", TemplateView.as_view(template_name='services/certificado_digital.html'), name='certificado_digital'),
     path("emissor-nota-fiscal/", TemplateView.as_view(template_name='services/emissor_nota_fiscal.html'), name='emissor_nota_fiscal'),

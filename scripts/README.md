@@ -12,7 +12,7 @@ Popula o banco de dados com planos de exemplo para o sistema de contratação.
 - Cria 9 planos pré-configurados:
   - 3 planos de Serviços (Bronze, Prata, Ouro)
   - 3 planos de Comércio (Bronze, Prata, Ouro)
-  - 3 planos de Abertura de Empresa (MEI, ME/EPP, LTDA Premium)
+  - 2 planos de Abertura de Empresa (ME/EPP, LTDA Premium)
 - Define preços, descontos, features e configurações
 - Marca planos em destaque
 - Define ordem de exibição

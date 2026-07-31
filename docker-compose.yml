@@ -2,8 +2,6 @@
 # DOCKER COMPOSE PARA O PROJETO GESTÃO 360
 # ==================================
 
-version: '3.8'
-
 services:
   # ==================================
   # SERVIÇO DO BANCO DE DADOS POSTGRESQL

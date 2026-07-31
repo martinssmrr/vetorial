@@ -9,10 +9,6 @@ CATEGORY_MAPPING = {
         'category_slug': 'abrir-empresa',
         'title': 'Abrir Empresa'
     },
-    'deixar-mei': {
-        'category_slug': 'deixar-mei',
-        'title': 'Deixar o MEI'
-    },
     'trocar-contador': {
         'category_slug': 'trocar-contador',
         'title': 'Trocar de Contador'
@@ -35,7 +31,6 @@ def show_recent_posts(page_slug, count=3):
     
     Mapeamento:
     - abrir-empresa → categoria 'abrir-empresa'
-    - deixar-mei → categoria 'deixar-mei'
     - trocar-contador → categoria 'trocar-contador'
     - contabilidade-completa → categoria 'contabilidade-completa'
     - assessoria → categoria 'assessoria-contabil'

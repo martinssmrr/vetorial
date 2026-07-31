@@ -159,25 +159,6 @@ def popular_planos():
     
     # ========== PLANOS DE ABERTURA ==========
     planos.append(Plano(
-        nome="Abertura MEI",
-        categoria="abertura",
-        preco=149.90,
-        preco_antigo=None,
-        descricao="Abertura completa de MEI com toda documentação inclusa.",
-        features=[
-            "Registro no CNPJ",
-            "Alvará automático",
-            "Inscrição Municipal",
-            "Suporte via WhatsApp",
-            "Entrega em até 3 dias úteis",
-            "Certificado digital (1º ano grátis)"
-        ],
-        ativo=True,
-        destaque=False,
-        ordem=1
-    ))
-    
-    planos.append(Plano(
         nome="Abertura ME/EPP",
         categoria="abertura",
         preco=499.90,

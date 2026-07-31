@@ -12,7 +12,6 @@ class StaticViewSitemap(Sitemap):
         return [
             'home',
             'abrir_empresa',
-            'deixar_mei',
             'trocar_contador',
             'contabilidade_completa',
             'assessoria',
